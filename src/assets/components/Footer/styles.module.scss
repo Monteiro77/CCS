@@ -1,0 +1,57 @@
+// styles.module.scss
+
+.footer {
+    padding: 5rem 0;
+  
+    h5 {
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+  
+    ul {
+      padding: 0;
+      list-style: none;
+  
+      li {
+        font-size: 0.9rem;
+        color: #6c757d;
+        margin-bottom: 0.5rem;
+      }
+    }
+  
+    .contactSection {
+      flex-direction: column;
+      text-align: center;
+  
+      h6 {
+        margin-bottom: 1rem;
+        font-size: 1rem;
+        color: #000;
+      }
+    }
+  
+    .contactForm {
+      max-width: 400px;
+      width: 100%;
+  
+      input {
+        border-radius: 0;
+        border-right: none;
+      }
+  
+      .submitButton {
+        border-radius: 0;
+        color: #fff;
+      }
+    }
+  
+    .bi {
+      font-size: 1.25rem;
+      color: #6c757d;
+      margin: 0 0.5rem;
+      &:hover {
+        color: #007bff;
+      }
+    }
+  }
+  
