@@ -4,7 +4,7 @@ import styles from './styles.module.scss';
 
 function InfoCard({ icon: Icon, title, description }) {
   return (
-    <div className={`card ${styles.card}`}>
+    <div className={`card ${styles.card}`} style={{minHeight: '140px'}}>
       <div className="card-body">
         <Icon className={styles.icon} />
         <h5 className="card-title">{title}</h5>
