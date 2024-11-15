@@ -1,14 +1,43 @@
 import React from 'react';
+import { Bar } from 'react-chartjs-2';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import styles from './styles.module.scss';
-
-// Importando ícones de exemplo (pode adaptar conforme necessário)
 import { FaChartLine, FaCloudUploadAlt, FaDatabase, FaShieldAlt } from 'react-icons/fa';
 import InfoCard from '../../components/InfoCard';
 
+// Registrando os componentes do Chart.js necessários
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
+
 export default function Dashboard() {
+  // Dados de exemplo para o gráfico de emissões de CO₂
+  const data = {
+    labels: ['América do Norte', 'América do Sul', 'Europa', 'África', 'Ásia', 'Oceania'],
+    datasets: [
+      {
+        label: 'Emissões de CO₂ (milhões de toneladas)',
+        data: [5000, 3000, 4500, 2500, 8000, 2000],  // Emissões por região
+        backgroundColor: 'rgba(75, 192, 192, 0.6)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+      },
+      title: {
+        display: true,
+        text: 'Emissões Globais de CO₂ por Região',
+      },
+    },
+  };
+
   return (
     <>
-
       {/* Conteúdo principal do Dashboard */}
       <main className="container h-full p-2">
         <h1 className="text-center mb-5">Dashboard Interativo</h1>
@@ -16,10 +45,8 @@ export default function Dashboard() {
         {/* Seção de gráfico central */}
         <div className={styles.chartSection}>
           <div className={styles.chartContainer}>
-            {/* Placeholder para gráfico */}
-            <div className={styles.chartPlaceholder}>
-              Gráfico Principal Aqui
-            </div>
+            {/* Gráfico de Barras de Emissões de CO₂ */}
+            <Bar data={data} options={options} />
           </div>
         </div>
 
@@ -58,6 +85,7 @@ export default function Dashboard() {
 
       {/* Footer */}
       <footer />
-      </>
+    </>
   );
 }
+
