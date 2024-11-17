@@ -37,7 +37,8 @@ export default function Header() {
               <button className={`btn ${styles.loginButton} me-2`}>Login</button> {/* Usando a classe CSS Module */}
               <div className="btn-group">
                 <button type="button" className={`btn btn-outline-success ${styles.registerButton}`} data-bs-toggle="dropdown" aria-expanded="false">
-                  Registrar
+                <Link to="/register" className="nav-link"> Registrar </Link>
+                 
                 </button>
               </div>
             </div>
