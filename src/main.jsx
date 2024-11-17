@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import PageNotFound from "./assets/pages/PageNotFound";
 import LandingPage from "./assets/pages/LandingPage/Index";
 import Dashboard from "./assets/pages/Dashboard/Index";
+import TiposEnergia from "./assets/pages/TiposEnergia";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <LandingPage /> }, // Página inicial
       { path: 'dashboard', element: <Dashboard /> }, // Dashboard
+      { path: 'tipos-energia', element: <TiposEnergia /> }, // Dashboard
       { path: '*', element: <PageNotFound /> }, // Página 404
     ],
   },

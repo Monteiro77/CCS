@@ -30,6 +30,15 @@ export default function Header() {
               <li className="nav-item">
                 <Link to="/armazenamento" className="nav-link">Armazenamento</Link>
               </li>
+              <li className="nav-item">
+                <Link to="/tipos-energia" className="nav-link">Tipos de Energia</Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/armazenamento" className="nav-link">Benefícios</Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/armazenamento" className="nav-link">Contato</Link>
+              </li>
             </ul>
 
             {/* Botões de Login e Registrar */}
