@@ -11,7 +11,7 @@ export default function FirstSection() {
                     <p className={styles.subtitle}>
                         An online platform designed to collect, visualize, and analyze data from IoT sensors.
                     </p>
-                    <div className={styles.buttonContainer}>
+                    <div className={styles.buttonContainer}>    
                         <button className={`btn ${styles.customButton} ${styles.button}`}>Interactive Dashboard</button>
                         <button className={`btn btn-outline-light ${styles.button}`}>More</button>
                     </div>
