@@ -1,4 +1,3 @@
-// Defina uma variável para a cor
 $primary-color: #436405;
 
 .section {
@@ -21,6 +20,7 @@ $primary-color: #436405;
     align-items: center;
     justify-content: start;
     padding-left: 80px;
+    padding-right: 20px;
 }
 
 .title {
@@ -59,4 +59,76 @@ $primary-color: #436405;
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
     border-radius: 25px;
+}
+
+/* Responsividade */
+
+@media (max-width: 1200px) {
+    .overlay {
+        padding-left: 60px; /* Ajuste do padding para telas menores */
+    }
+
+    .title {
+        font-size: 3rem;  /* Reduz o tamanho do título */
+        width: 50%; /* Ajusta a largura */
+    }
+
+    .subtitle {
+        font-size: 1rem; /* Reduz o tamanho da legenda */
+        width: 60%; /* Ajusta a largura */
+    }
+
+    .buttonContainer {
+        flex-direction: column; /* Faz os botões empilharem em telas menores */
+        align-items: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .overlay {
+        padding-left: 30px; /* Ajuste do padding para telas menores */
+        padding-right: 30px;
+    }
+
+    .title {
+        font-size: 2.5rem; /* Reduz ainda mais o tamanho do título */
+        width: 100%; /* Título ocupa 100% da largura */
+        text-align: center; /* Centraliza o título */
+    }
+
+    .subtitle {
+        font-size: 1rem; /* Reduz o tamanho da legenda */
+        width: 100%; /* Legenda ocupa 100% da largura */
+        text-align: center; /* Centraliza a legenda */
+    }
+
+    .buttonContainer {
+        flex-direction: column; /* Botões empilhados */
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+    .customButton, .button {
+        width: 100%; /* Botões ocupam a largura total */
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 2rem; /* Reduz o título ainda mais */
+    }
+
+    .subtitle {
+        font-size: 0.9rem; /* Reduz a legenda para telas muito pequenas */
+    }
+
+    .buttonContainer {
+        gap: 0.5rem;
+        flex-direction: column; /* Botões empilhados */
+        align-items: center;
+    }
+
+    .customButton, .button {
+        width: 100%; /* Botões ocupam a largura total */
+    }
 }

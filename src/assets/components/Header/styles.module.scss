@@ -1,7 +1,48 @@
-// Definir a cor primária
+// Variáveis
 $primary-color: #436405;
 
-// Estilo para o botão "Login"
+// Estilo do botão hambúrguer
+.hamburger {
+  border: none;
+  background: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 24px;
+
+  span {
+    display: block;
+    width: 100%;
+    height: 4px;
+    background-color: $primary-color;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  // Alterações quando o menu está ativo
+  &[aria-expanded="true"] {
+    span:nth-child(1) {
+      transform: rotate(45deg);
+      transform-origin: top left;
+    }
+
+    span:nth-child(2) {
+      opacity: 0;
+    }
+
+    span:nth-child(3) {
+      transform: rotate(-45deg);
+      transform-origin: bottom left;
+    }
+  }
+}
+
+// Botão de Login
 .loginButton {
   background-color: $primary-color;
   border-color: $primary-color;
@@ -14,7 +55,7 @@ $primary-color: #436405;
   }
 }
 
-// Estilo para o botão "Registrar" (dropdown)
+// Botão de Registrar
 .registerButton {
   border-color: $primary-color;
   color: $primary-color;
@@ -25,7 +66,21 @@ $primary-color: #436405;
   }
 }
 
-// Estilo para o ícone do navbar
-.navbarTogglerIcon {
-  background-color: $primary-color;
+// Responsividade
+.logo {
+  width: 150px;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    width: 120px;
+  }
+
+  .navbar-nav {
+    text-align: center;
+  }
+
+  .loginButton {
+    margin-bottom: 10px;
+  }
 }

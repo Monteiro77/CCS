@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -12,7 +11,8 @@ export default function Register() {
 
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
-  const [captchaValue, setCaptchaValue] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -23,20 +23,10 @@ export default function Register() {
     setSuccess('');
   };
 
-  const handleCaptchaChange = (value) => {
-    setCaptchaValue(value);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const { fullName, email, region, password, confirmPassword } = formData;
-
-    // Verificar se o reCAPTCHA foi resolvido
-    if (!captchaValue) {
-      setError('Por favor, confirme que você não é um robô.');
-      return;
-    }
 
     if (!fullName || !email || !region || !password || !confirmPassword) {
       setError('Todos os campos são obrigatórios.');
@@ -60,7 +50,6 @@ export default function Register() {
       password: '',
       confirmPassword: '',
     });
-    setCaptchaValue(null); // Resetar o reCAPTCHA após o envio
   };
 
   return (
@@ -177,57 +166,79 @@ export default function Register() {
             <label htmlFor="password" className="form-label">
               Senha
             </label>
-            <input
-              type="password"
-              className="form-control"
-              id="password"
-              name="password"
-              placeholder="Digite sua senha"
-              value={formData.password}
-              onChange={handleChange}
-              style={{
-                borderRadius: '10px',
-                border: '1px solid #ccc',
-                padding: '10px',
-                outline: 'none',
-                transition: 'border-color 0.2s ease',
-              }}
-              onFocus={(e) => (e.target.style.borderColor = '#436405')}
-              onBlur={(e) => (e.target.style.borderColor = '#ccc')}
-            />
+            <div className="input-group">
+              <input
+                type={showPassword ? 'text' : 'password'}
+                className="form-control"
+                id="password"
+                name="password"
+                placeholder="Digite sua senha"
+                value={formData.password}
+                onChange={handleChange}
+                style={{
+                  borderRadius: '10px 0 0 10px',
+                  border: '1px solid #ccc',
+                  padding: '10px',
+                  outline: 'none',
+                  transition: 'border-color 0.2s ease',
+                }}
+                onFocus={(e) => (e.target.style.borderColor = '#436405')}
+                onBlur={(e) => (e.target.style.borderColor = '#ccc')}
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                style={{
+                  border: '1px solid #ccc',
+                  borderRadius: '0 10px 10px 0',
+                  padding: '0 10px',
+                  backgroundColor: '#fff',
+                  cursor: 'pointer',
+                }}
+              >
+                {showPassword ? '👁️' : '🔒'}
+              </button>
+            </div>
           </div>
 
-          {/* Confirmação da Senha */}
+          {/* Confirmar Senha */}
           <div className="mb-3">
             <label htmlFor="confirmPassword" className="form-label">
               Confirmar Senha
             </label>
-            <input
-              type="password"
-              className="form-control"
-              id="confirmPassword"
-              name="confirmPassword"
-              placeholder="Confirme sua senha"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              style={{
-                borderRadius: '10px',
-                border: '1px solid #ccc',
-                padding: '10px',
-                outline: 'none',
-                transition: 'border-color 0.2s ease',
-              }}
-              onFocus={(e) => (e.target.style.borderColor = '#436405')}
-              onBlur={(e) => (e.target.style.borderColor = '#ccc')}
-            />
-          </div>
-
-          {/* reCAPTCHA */}
-          <div className="mb-3">
-            <ReCAPTCHA
-              sitekey="SUA_CHAVE_DE_SITE_AQUI" // Substitua pela sua chave de site do reCAPTCHA
-              onChange={handleCaptchaChange}
-            />
+            <div className="input-group">
+              <input
+                type={showConfirmPassword ? 'text' : 'password'}
+                className="form-control"
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="Confirme sua senha"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                style={{
+                  borderRadius: '10px 0 0 10px',
+                  border: '1px solid #ccc',
+                  padding: '10px',
+                  outline: 'none',
+                  transition: 'border-color 0.2s ease',
+                }}
+                onFocus={(e) => (e.target.style.borderColor = '#436405')}
+                onBlur={(e) => (e.target.style.borderColor = '#ccc')}
+              />
+              <button
+                type="button"
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                style={{
+                  border: '1px solid #ccc',
+                  borderRadius: '0 10px 10px 0',
+                  padding: '0 10px',
+                  backgroundColor: '#fff',
+                  cursor: 'pointer',
+                }}
+              >
+                {showConfirmPassword ? '👁️' : '🔒'}
+              </button>
+            </div>
           </div>
 
           {/* Mensagens de erro/sucesso */}
@@ -252,7 +263,6 @@ export default function Register() {
           >
             Registrar
           </button>
-
         </form>
       </div>
     </div>
