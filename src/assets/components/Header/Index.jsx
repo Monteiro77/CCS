@@ -49,12 +49,7 @@ export default function Header() {
               <li className="nav-item">
                 <Link to="/dashboard" className="nav-link">Dashboard</Link>
               </li>
-              <li className="nav-item">
-                <Link to="/sensores" className="nav-link">Sensores</Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/armazenamento" className="nav-link">Armazenamento</Link>
-              </li>
+
               <li className="nav-item">
                 <Link to="/tipos-energia" className="nav-link">Tipos de Energia</Link>
               </li>
