@@ -1,54 +1,74 @@
+import { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 
 export default function BeneficiosDesafios() {
-  const beneficios = [
-    "Redução da emissão de gases do efeito estufa, ajudando a combater as mudanças climáticas.",
-    "Fontes de energia renováveis são inesgotáveis, garantindo sustentabilidade a longo prazo.",
-    "Criação de empregos na instalação e manutenção de tecnologias limpas.",
-    "Melhoria na qualidade do ar, reduzindo impactos na saúde pública.",
-    "Independência energética, reduzindo a dependência de combustíveis fósseis importados.",
-  ];
+  const [apiData, setApiData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  const desafios = [
-    "Custo inicial elevado para implementação de tecnologias renováveis.",
-    "Dependência de fatores naturais, como sol ou vento, que podem ser variáveis.",
-    "Necessidade de espaço físico para instalações, como fazendas solares ou parques eólicos.",
-    "Desafios no armazenamento de energia devido à intermitência de algumas fontes.",
-    "Adaptação de redes elétricas existentes para integrar energias renováveis.",
-  ];
+  useEffect(() => {
+    const fetchApiData = async () => {
+      try {
+        const response = await fetch(
+          "https://6733b896a042ab85d117ce17.mockapi.io/ccs/v1/beneficios"
+        );
+        if (!response.ok) {
+          throw new Error("Erro ao carregar os dados da API");
+        }
+        const data = await response.json();
+        setApiData(data[0]); // Como o objeto de interesse está na primeira posição
+        setLoading(false);
+      } catch (err) {
+        setError("Erro ao carregar os dados");
+        setLoading(false);
+      }
+    };
+
+    fetchApiData();
+  }, []);
 
   return (
     <div className={`${styles.container} container mt-5`}>
-      <h1 className="text-center mb-4" style={{color: "#436405"}}>Benefícios e Desafios da Energia Limpa</h1>
+      <h1 className="text-center mb-4" style={{ color: "#436405" }}>
+        Benefícios e Desafios da Energia Limpa
+      </h1>
       <div className="row justify-content-center gap-2">
         {/* Benefícios */}
         <div className="col-5 mb-5">
           <h2 className={styles.sectionTitle}>Benefícios</h2>
-          <ul className={styles.list}>
-            {beneficios.map((beneficio, index) => (
-              <li key={index} className={styles.listItem}>
-               <span className="fw-bold">
-                    {`${index + 1} `}
-                </span>
-                {`${beneficio}` }
-              </li>
-            ))}
-          </ul>
+          {loading ? (
+            <p>Carregando...</p>
+          ) : error ? (
+            <p className="text-danger">{error}</p>
+          ) : (
+            <ul className={styles.list}>
+              {apiData.beneficios.map((beneficio, index) => (
+                <li key={index} className={styles.listItem}>
+                  <span className="fw-bold">{`${index + 1} `}</span>
+                  {beneficio}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
 
         {/* Desafios */}
         <div className="col-5">
           <h2 className={styles.sectionTitle}>Desafios</h2>
-          <ul className={styles.list}>
-            {desafios.map((desafio, index) => (
-              <li key={index} className={styles.listItem}>
-                <span className="fw-bold">
-                    {`${index + 1} `}
-                </span>
-                {`${desafio}` }
-              </li>
-            ))}
-          </ul>
+          {loading ? (
+            <p>Carregando...</p>
+          ) : error ? (
+            <p className="text-danger">{error}</p>
+          ) : (
+            <ul className={styles.list}>
+              {apiData.desafios.map((desafio, index) => (
+                <li key={index} className={styles.listItem}>
+                  <span className="fw-bold">{`${index + 1} `}</span>
+                  {desafio}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     </div>
