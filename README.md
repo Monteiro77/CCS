@@ -1,4 +1,4 @@
-# 🏗️ Projeto: Benefícios 🌱 e Desafios 💡 da Energia Limpa 🌍
+# 🏗️ Projeto: Energia Limpa 🌍
 
 ## 📝 Descrição
 
