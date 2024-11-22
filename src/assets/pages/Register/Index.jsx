@@ -41,6 +41,7 @@ export default function Register() {
     const users = JSON.parse(localStorage.getItem('users')) || [];
     const newUser = { fullName, email, region, password };
     localStorage.setItem('users', JSON.stringify([...users, newUser]));
+    localStorage.setItem('username', newUser.fullName);
 
     setSuccess('Registro realizado com sucesso!');
     setFormData({

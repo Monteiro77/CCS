@@ -8,71 +8,68 @@ $primary-color: #436405;
     flex-direction: column;
     justify-content: center;
     position: relative;
-    color: #436405;
-}
+    color: $primary-color;
 
-.overlay {
-   // Sombra para melhorar a leitura
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 0 20px;
-}
+    .overlay {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0 20px;
+    }
 
-.title {
-    font-size: 3.5rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-}
-
-.subtitle {
-    font-size: 1.2rem;
-    margin-bottom: 1rem;
-}
-
-.videoWrapper {
-    max-width: 100%;
-}
-
-.video {
-    border-radius: 8px;
-}
-
-/* Responsividade */
-
-@media (max-width: 1200px) {
     .title {
-        font-size: 3rem; /* Reduz o tamanho do título em telas menores */
+        font-size: 3.5rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
     }
 
     .subtitle {
-        font-size: 1rem; /* Reduz o tamanho da legenda */
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .videoWrapper {
+        max-width: 100%;
+
+        iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border-radius: 8px;
+        }
+    }
+}
+
+/* Responsividade */
+@media (max-width: 1200px) {
+    .section {
+        height: 100%;
+    }
+
+    .title {
+        font-size: 3rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
     }
 
     .dashboard {
         padding: 0 15px;
     }
-
-    .videoWrapper iframe {
-        width: 90%; /* Ajusta o vídeo para não ultrapassar a largura da tela */
-        height: auto; /* Ajusta a altura do vídeo */
-    }
-
-    .col-md-4 {
-        margin-bottom: 2rem;
-    }
 }
 
 @media (max-width: 768px) {
+
+
     .title {
-        font-size: 2.5rem; /* Reduz o título em telas pequenas */
+        font-size: 2.5rem;
     }
 
     .subtitle {
-        font-size: 1rem; /* Ajusta a legenda */
+        font-size: 1rem;
     }
 
     .dashboard {
@@ -81,31 +78,23 @@ $primary-color: #436405;
 
     .col-md-4 {
         margin-bottom: 1.5rem;
-        flex: 0 0 100%;
-    }
-
-    .videoWrapper iframe {
-        width: 100%; /* O vídeo ocupa 100% da largura */
-        height: 300px; /* Ajusta a altura para ficar proporcional */
+        flex: 0 0 50%;
+       
     }
 }
 
 @media (max-width: 480px) {
     .title {
-        font-size: 2rem; /* Título menor em telas muito pequenas */
+        font-size: 2rem;
     }
 
     .subtitle {
-        font-size: 0.9rem; /* Reduz o tamanho da legenda */
-    }
-
-    .videoWrapper iframe {
-        width: 100%; /* Ajuste para o vídeo */
-        height: 250px; /* Ajusta a altura para telas pequenas */
+        font-size: 0.9rem;
     }
 
     .col-md-4 {
         margin-bottom: 1rem;
-        flex: 0 0 100%; /* As colunas ocupam 100% da largura */
+        flex: 0 0 100%;
+        
     }
 }

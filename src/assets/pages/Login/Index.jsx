@@ -53,6 +53,8 @@ export default function Login() {
       password: '',
       rememberMe: false,
     });
+
+    window.location.href = "dashboard"
   };
 
   return (

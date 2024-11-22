@@ -5,9 +5,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
     <>
-      <Header /> {/* Header fixado em todas as páginas */}
+      <Header />
       <main>
-        <Outlet /> {/* Renderiza o conteúdo da rota ativa */}
+        <Outlet /> 
       </main>
     </>
   );
